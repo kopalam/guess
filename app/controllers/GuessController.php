@@ -133,29 +133,7 @@ class GuessController extends Controller
 
 	}
 
-	function 	delUserDataAction()
-	{
-		$token 	=	$this->request->getPost('token');
-			$author = new Authory( $token );
-			$author->loggingVerify();
 
-			$uid 	=	$this->request->getPost('uid');
-			$sid 	=	$this->request->getPost('sid');
-
-		$user 	=	PrizeLogs::findFirst(['conditions'=>"sid = ".$sid." and uid = ".$uid]);
-
-		$user->finish_time = 0;
-		$user->prize_amount = 0;
-		$user->result = 0;
-		$user->pid = 0;
-		$user->save();
-
-		if($user->save() == false)
-			Utils::jsonError(1,'出错了');
-
-		Utils::apiDisplay(['status'=>0,'message'=>'ok']);
-
-	}
 
 
 
