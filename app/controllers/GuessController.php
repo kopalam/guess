@@ -9,6 +9,7 @@ class GuessController extends Controller
 	function getListAction()
 	{
 		/*
+		基于phalcon的看图猜餐厅 - 使用于微信小程序
 			活动列表
 			@获取collection表中status=0的活动
 			@获取prize表中，sid = collection中的id
@@ -130,6 +131,30 @@ class GuessController extends Controller
 			
 
 			Utils::apiDisplay(['status'=>0,'data'=>$data]);
+
+	}
+
+	function 	delUserDataAction()
+	{
+		$token 	=	$this->request->getPost('token');
+			$author = new Authory( $token );
+			$author->loggingVerify();
+
+			$uid 	=	$this->request->getPost('uid');
+			$sid 	=	$this->request->getPost('sid');
+
+		$user 	=	PrizeLogs::findFirst(['conditions'=>"sid = ".$sid." and uid = ".$uid]);
+
+		$user->finish_time = 0;
+		$user->prize_amount = 0;
+		$user->result = 0;
+		$user->pid = 0;
+		$user->save();
+
+		if($user->save() == false)
+			Utils::jsonError(1,'出错了');
+
+		Utils::apiDisplay(['status'=>0,'message'=>'ok']);
 
 	}
 
