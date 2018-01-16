@@ -10,7 +10,7 @@ class Cache  {
 
     protected function _initMemcache(){
         $memcache = new memcache();
-        $memcache->connect("120.25.63.187","11211");
+        $memcache->connect("","11211");
         return $memcache;
     }
 

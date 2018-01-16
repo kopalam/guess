@@ -17,8 +17,8 @@ class WXLoginHelper {
     //默认配置
     protected $config = [
         'url' => "https://api.weixin.qq.com/sns/jscode2session", //微信获取session_key接口url
-        'appid' => 'wx48d48805f93d200b', // APPId
-        'secret' => '4876b61a13c06ddb490692697bbdd2fa', // 秘钥
+        'appid' => '', // APPId
+        'secret' => '', // 秘钥
         'grant_type' => 'authorization_code'// grant_type，一般情况下固定的
     ];
 

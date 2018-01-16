@@ -10,7 +10,7 @@ class Redis  {
 
     protected function _initMemcache(){
         $redis = new redis();
-        $redis->connect("120.25.63.187","63796");
+        $redis->connect();
         $redis->select('guess');  
         return $redis;
     }
